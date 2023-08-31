@@ -1,12 +1,23 @@
-adapter:
-  build: .
-  volumes:
-   - .:/usr/src/app
-  links:
-   - mongo
-  environment:
-   - WATERLINE_ADAPTER_TESTS_DATABASE=sails-mongo
-   - NODE_ENV=test
-
-mongo:
-  image: mongo
+version: "3.9"
+services:
+  adapter:
+    build: .
+    volumes:
+      - .:/usr/src/app
+    links:
+      - mongodb
+    environment:
+      - WATERLINE_ADAPTER_TESTS_DATABASE=sails-mongo
+      - WATERLINE_ADAPTER_TESTS_HOST=mongodb
+      - NODE_ENV=test
+    networks:
+      - default
+  mongodb:
+    image: mongo:6.0 #5.0 # mongo:4.4
+    ports:
+      - "127.0.0.1:27017:27017"
+    networks:
+      - default
+networks:
+  default:
+    name: "sails_test_network"
