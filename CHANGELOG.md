@@ -1,4 +1,10 @@
-# Sails-Mongo Changelog
+# Sails-Mongo append Changelog
+
+### 0.12.5
+* mongoDB driver vesion upgrade mongodb 7.0 test
+
+### 0.12.4
+* mongoDB 6.0 supported
 
 ### 0.12.2
 
